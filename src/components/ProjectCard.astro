@@ -4,7 +4,7 @@
 interface Props {
 	title: string;
 	description: string;
-	imgSrc: string;
+	imgSrc?: string;
 	tags: string[];
 	githubUrl: string;
 	liveUrl?: string;
@@ -16,7 +16,9 @@ const { title, description, imgSrc, tags, githubUrl, liveUrl, imageFit, layout =
 ---
 
 <div class:list={["card", layout]}>
-    <img src={imgSrc} alt={`Screenshot of ${title}`} class="card-img" style={`object-fit: ${imageFit ?? 'cover'};`} />
+    
+    {imgSrc && <img src={imgSrc} alt={`Screenshot of ${title}`} class="card-img" style={`object-fit: ${imageFit ?? 'cover'};`} />}
+    
     <div class="card-content">
         <h4>{title}</h4>
         <p>{description}</p>
@@ -97,6 +99,7 @@ p {
 }
 .links {
     margin-top: 1.5rem;
+    text-align: center;
 }
 .button {
     display: inline-block;

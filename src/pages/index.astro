@@ -18,11 +18,23 @@ import ProjectCard from '../components/ProjectCard.astro';
 				<div class="header-text">
 					<h1>Roman Boparai</h1>
 					<h2>Lead Software Engineer | C#, Java, C++ | Cross-Platform & Backend Systems</h2>
-					<div class="links">
-						<a href="https://www.linkedin.com/in/ramnjit-boparai/" target="_blank">LinkedIn</a>
-						&bull;
-						<a href="https://github.com/Ramnjit/" target="_blank">GitHub</a>
-					</div>
+				<div class="links">
+					<a href="/resume" title="Resume">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+					</a>
+					&bull;
+					<a href="/contact" title="Contact">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+					</a>
+					&bull;
+					<a href="https://www.linkedin.com/in/ramnjit-boparai/" target="_blank" title="LinkedIn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+					</a>
+					&bull;
+					<a href="https://github.com/Ramnjit/" target="_blank" title="GitHub">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+					</a>
+				</div>
 				</div>
 			</header>
 
@@ -47,8 +59,8 @@ import ProjectCard from '../components/ProjectCard.astro';
 					description="A cross-platform mobile app for searching food product data, featuring native Android notifications, a local SQLite database for favorites, and a themeable UI."
 					imgSrc="/images/foodfactsapp.gif"
 					tags={['C#', '.NET MAUI', 'MVVM', 'SQLite', 'Native Android']}
-					githubUrl="https://github.com/Ramnjit/FoodFacts"
-					liveUrl="https://github.com/Ramnjit/FoodFacts/releases"
+					githubUrl="https://github.com/ramnjit/FoodFacts-MAUI-App"
+					liveUrl="https://github.com/ramnjit/FoodFacts-MAUI-App/releases"
 					imageFit="contain"
 					layout="horizontal"
 				/>
@@ -57,8 +69,21 @@ import ProjectCard from '../components/ProjectCard.astro';
 					description="A Unity simulation where an AI agent, powered by a Neural Network and a Genetic Algorithm, learns to play Flappy Bird over successive generations."
 					imgSrc="/images/gann.gif"
 					tags={['Unity', 'C#', 'AI', 'Neural Network', 'Genetic Algorithm']}
-					githubUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork"
+					githubUrl="https://github.com/ramnjit/GeneticAlgorithmNeuralNetwork"
 					imageFit='contain'
+				/>
+				<ProjectCard
+					title="Python ETL Data Pipeline"
+					description="A simple daily ETL script that extracts weather data from a public API, performs a transformation, and loads the raw and processed data into an AWS S3 bucket."
+					tags={['Python', 'ETL', 'AWS S3', 'Boto3']}
+					githubUrl="https://github.com/ramnjit/daily-weather-pipeline"
+				/>
+
+				<ProjectCard
+					title="Python Web Crawlers"
+					description="A collection of simple web crawlers developed for university coursework, demonstrating the fundamentals of HTTP requests and HTML parsing with Beautiful Soup."
+					tags={['Python', 'Web Scraping', 'Beautiful Soup']}
+					githubUrl="https://github.com/ramnjit/webcrawlers"
 				/>
 			</section>
 		</main>
@@ -134,5 +159,12 @@ import ProjectCard from '../components/ProjectCard.astro';
 	}
 	.links a {
 		margin: 0 0.5rem;
+	}
+	.links a svg {
+    vertical-align: middle;
+    transition: stroke 0.2s ease-in-out;
+	}
+	.links a:hover svg {
+		stroke: #333; /* Darker color on hover */
 	}
 </style>
