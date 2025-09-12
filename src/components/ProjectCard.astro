@@ -1,0 +1,135 @@
+---
+// src/components/ProjectCard.astro
+
+interface Props {
+	title: string;
+	description: string;
+	imgSrc: string;
+	tags: string[];
+	githubUrl: string;
+	liveUrl?: string;
+	imageFit?: 'cover' | 'contain';
+    layout?: 'vertical' | 'horizontal'; 
+}
+
+const { title, description, imgSrc, tags, githubUrl, liveUrl, imageFit, layout = 'vertical' } = Astro.props;
+---
+
+<div class:list={["card", layout]}>
+    <img src={imgSrc} alt={`Screenshot of ${title}`} class="card-img" style={`object-fit: ${imageFit ?? 'cover'};`} />
+    <div class="card-content">
+        <h4>{title}</h4>
+        <p>{description}</p>
+        <div class="tags">
+            {tags.map((tag) => (
+                <span class="tag">{tag}</span>
+            ))}
+        </div>
+        <div class="links">
+            <a href={githubUrl} target="_blank" class="button">View on GitHub</a>
+            {liveUrl && <a href={liveUrl} target="_blank" class="button">Live Demo / Download</a>}
+        </div>
+    </div>
+</div>
+
+<style>
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card.vertical {
+    flex-direction: column;
+}
+.card.vertical .card-img {
+    width: 100%;
+    height: 500px;
+}
+
+.card.horizontal {
+    flex-direction: row;
+    align-items: center;
+}
+.card.horizontal .card-img {
+    width: 30%;
+    height: 400px;
+}
+.card.horizontal .card-content {
+    width: 70%;
+}
+
+.card-img {
+    display: block;
+}
+.card-content {
+    padding: 1.5rem;
+}
+h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+p {
+    margin-top: 0;
+}
+.tags {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.tag {
+    display: inline-block;
+    background: #e0eafc;
+    color: #3b82f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.links {
+    margin-top: 1.5rem;
+}
+.button {
+    display: inline-block;
+    background: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+.button:hover {
+    background: #555;
+}
+
+header {    
+    display: flex;
+    align-items: center;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 2rem;
+    border: 3px solid var(--color-primary);
+}
+
+.header-text {
+    flex-grow: 1;
+}
+</style>

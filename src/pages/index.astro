@@ -1,3 +1,7 @@
+---
+// src/pages/index.astro
+import ProjectCard from '../components/ProjectCard.astro';
+---
 
 <html lang="en">
 	<head>
@@ -10,29 +14,53 @@
 	<body>
 		<main>
 			<header>
-				<h1>Roman Boparai</h1>
-				<h2>Lead Software Engineer | C#, Java, C++ | Cross-Platform & Backend Systems</h2>
-				<div class="links">
-					<a href="https://www.linkedin.com/in/ramnjit-boparai/" target="_blank">LinkedIn</a>
-					&bull;
-					<a href="https://github.com/Ramnjit/" target="_blank">GitHub</a>
+				<img src="/images/romanboparai.jpg" alt="Roman Boparai" class="profile-pic" />
+				<div class="header-text">
+					<h1>Roman Boparai</h1>
+					<h2>Lead Software Engineer | C#, Java, C++ | Cross-Platform & Backend Systems</h2>
+					<div class="links">
+						<a href="https://www.linkedin.com/in/ramnjit-boparai/" target="_blank">LinkedIn</a>
+						&bull;
+						<a href="https://github.com/Ramnjit/" target="_blank">GitHub</a>
+					</div>
 				</div>
 			</header>
 
 			<section>
 				<h3>About Me</h3>
 				<p>
-					I am a Lead Software Engineer with over 6.5 years of experience architecting and building high-performance applications. My expertise spans both cross-platform and backend systems, with a strong foundation in Python, C#, Java, C++ and JavaScript.
+					I am a Lead Software Engineer with over 6.5 years of experience architecting and building high-performance applications. 
+					My expertise spans both cross-platform and backend systems, with a strong foundation in C#, Java, C++, and JavaScript.
 				</p>
-                <p>
-                    My professional foundation was forged in the high-performance environment of AAA game development at Lost Boys Interactive, where I delivered full-stack features for the WWE 2K series using C++. I have since grown into a technical leadership role at Carl's Place, where I own projects from design to deployment across a versatile stack including C#, Python, and JavaScript. I stay current with modern mobile patterns through personal projects, such as a .NET MAUI application featuring native Android API integration.
-                </p>
+				<p>
+					My professional foundation was forged in the high-performance environment of AAA game development at Lost Boys Interactive, 
+					where I delivered full-stack features for the WWE 2K series using C++. I have since grown into a technical leadership role at Carl's Place, 
+					where I own projects from design to deployment across a versatile stack including C#, Python, and JavaScript. I stay current with modern mobile patterns 
+					through personal projects, such as a .NET MAUI application featuring native Android API integration.
+				</p>
 			</section>
-            
-            <section>
-                <h3>Projects</h3>
-                <p>A showcase of my recent work will be added here soon. For now, please see my <a href="https://github.com/Ramnjit/" target="_blank">GitHub profile</a>.</p>
-            </section>
+			
+			<section>
+				<h3>Projects</h3>
+				<ProjectCard
+					title="FoodFacts .NET MAUI App"
+					description="A cross-platform mobile app for searching food product data, featuring native Android notifications, a local SQLite database for favorites, and a themeable UI."
+					imgSrc="/images/foodfactsapp.gif"
+					tags={['C#', '.NET MAUI', 'MVVM', 'SQLite', 'Native Android']}
+					githubUrl="https://github.com/Ramnjit/FoodFacts"
+					liveUrl="https://github.com/Ramnjit/FoodFacts/releases"
+					imageFit="contain"
+					layout="horizontal"
+				/>
+                <ProjectCard
+					title="AI Learns to Play Flappy Bird"
+					description="A Unity simulation where an AI agent, powered by a Neural Network and a Genetic Algorithm, learns to play Flappy Bird over successive generations."
+					imgSrc="/images/gann.gif"
+					tags={['Unity', 'C#', 'AI', 'Neural Network', 'Genetic Algorithm']}
+					githubUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork"
+					imageFit='contain'
+				/>
+			</section>
 		</main>
 	</body>
 </html>
@@ -42,7 +70,7 @@
 		--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 		--font-serif: 'Georgia', serif;
 		--color-text: #333;
-		--color-primary: #0073b1; /* LinkedIn Blue */
+		--color-primary: #0073b1;
 	}
 	body {
 		font-family: var(--font-sans);
@@ -60,12 +88,27 @@
 		border-radius: 8px;
 		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 	}
+	    
 	header {
-		text-align: center;
+		display: flex;
+		align-items: center;
+		text-align: left;
 		border-bottom: 1px solid #eee;
 		padding-bottom: 1rem;
 		margin-bottom: 2rem;
 	}
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover; 
+        margin-right: 2rem;
+        border: 3px solid var(--color-primary);
+    }
+    .header-text {
+        flex-grow: 1;
+    }    
+
 	h1 {
 		margin: 0;
 		font-size: 2.5rem;
