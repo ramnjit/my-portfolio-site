@@ -1,6 +1,3 @@
----
-
----
 
 <html lang="en">
 	<head>
@@ -8,9 +5,91 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Roman Boparai - Software Engineer</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main>
+			<header>
+				<h1>Roman Boparai</h1>
+				<h2>Lead Software Engineer | C#, Java, C++ | Cross-Platform & Backend Systems</h2>
+				<div class="links">
+					<a href="https://www.linkedin.com/in/ramnjit-boparai/" target="_blank">LinkedIn</a>
+					&bull;
+					<a href="https://github.com/Ramnjit/" target="_blank">GitHub</a>
+				</div>
+			</header>
+
+			<section>
+				<h3>About Me</h3>
+				<p>
+					I am a Lead Software Engineer with over 6.5 years of experience architecting and building high-performance applications. My expertise spans both cross-platform and backend systems, with a strong foundation in C#, Java, and C++.
+				</p>
+                <p>
+                    My professional foundation was forged in the high-performance environment of AAA game development at Lost Boys Interactive, where I delivered full-stack features for the WWE 2K series using C++. I have since grown into a technical leadership role at Carl's Place, where I own projects from design to deployment across a versatile stack including C#, Python, and JavaScript. I stay current with modern mobile patterns through personal projects, such as a .NET MAUI application featuring native Android API integration.
+                </p>
+			</section>
+            
+            <section>
+                <h3>Projects</h3>
+                <p>A showcase of my recent work will be added here soon. For now, please see my <a href="https://github.com/Ramnjit/" target="_blank">GitHub profile</a>.</p>
+            </section>
+		</main>
 	</body>
 </html>
+
+<style>
+	:root {
+		--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+		--font-serif: 'Georgia', serif;
+		--color-text: #333;
+		--color-primary: #0073b1; /* LinkedIn Blue */
+	}
+	body {
+		font-family: var(--font-sans);
+		color: var(--color-text);
+		line-height: 1.6;
+		margin: 0;
+		padding: 0;
+		background: #f4f4f4;
+	}
+	main {
+		max-width: 800px;
+		margin: 2rem auto;
+		padding: 2rem;
+		background: white;
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+	}
+	header {
+		text-align: center;
+		border-bottom: 1px solid #eee;
+		padding-bottom: 1rem;
+		margin-bottom: 2rem;
+	}
+	h1 {
+		margin: 0;
+		font-size: 2.5rem;
+	}
+	h2 {
+		margin: 0.5rem 0;
+		font-size: 1.2rem;
+		font-weight: 400;
+		color: #555;
+	}
+	h3 {
+		font-family: var(--font-serif);
+		border-bottom: 2px solid var(--color-primary);
+		padding-bottom: 0.5rem;
+		margin-top: 2rem;
+	}
+	a {
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	.links a {
+		margin: 0 0.5rem;
+	}
+</style>
