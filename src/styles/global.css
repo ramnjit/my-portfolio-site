@@ -1,0 +1,205 @@
+/* ============================================= */
+/* == VARIABLES & THEME DEFINITIONS == */
+/* ============================================= */
+:root {
+	--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	--font-serif: 'Georgia', serif;
+	--color-text: #333;
+	--color-primary: #0073b1;
+    --color-bg: #f4f4f4;
+    --color-card-bg: white;
+    --color-shadow: rgba(0,0,0,0.1);
+    --color-tag-bg: #e0eafc;
+    --color-tag-text: #3b82f6;
+}
+
+html[data-theme='dark'] {
+    --color-text: #e2e8f0;
+    --color-primary: #ffc558;
+    --color-bg: #0d1117;
+    --color-card-bg: #161b22;
+    --color-shadow: rgba(255,255,255,0.05);
+    --color-tag-bg: #423d21;
+    --color-tag-text: #ffc558;
+}
+
+/* ============================================= */
+/* == GLOBAL & RESET STYLES == */
+/* ============================================= */
+body {
+	font-family: var(--font-sans);
+	color: var(--color-text);
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+	background: var(--color-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+/* ============================================= */
+/* == HEADER, MAIN & TYPOGRAPHY == */
+/* ============================================= */
+
+/* The main header container */
+header {
+	max-width: 800px;
+	margin: 2rem auto;
+	display: flex;
+	align-items: center;
+    gap: 2rem;
+}
+
+/* The profile picture */
+.profile-pic {
+	width: 175px;
+	height: 175px;
+	border-radius: 50%;
+	object-fit: cover; 
+	border: 3px solid var(--color-primary);
+    flex-shrink: 0;
+}
+
+/* The container for all the text */
+.header-text {
+    flex-grow: 1;
+}
+
+/* Name */
+h1 {
+	margin: 0;
+	font-size: 3.75rem;
+    line-height: 1.1;
+}
+
+/* Headline */
+h2 {
+	margin: 0.5rem 0 1rem 0; 
+	font-size: 1.3rem;
+	font-weight: 400;
+	color: #8b949e;
+}
+
+/* Section Headers */
+h3 {
+	font-family: var(--font-serif);
+	border-bottom: 2px solid var(--color-primary);
+	padding-bottom: 0.5rem;
+	margin-top: 0;
+}
+
+main {
+	max-width: 800px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background: var(--color-card-bg);
+	border-radius: 8px;
+	box-shadow: 0 4px 6px var(--color-shadow);
+    transition: background-color 0.3s ease;
+	position: relative;
+}
+
+/* ============================================= */
+/* == UI COMPONENTS == */
+/* ============================================= */
+.button {
+    display: inline-block;
+    background: #333;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+.button:hover {
+    background: #555;
+    color: white; 
+    text-decoration: none;
+}
+
+.links a {
+	margin: 0 0.25rem;
+    color: var(--color-text);
+}
+.links a:first-child {
+    margin-left: 0;
+}
+.links a svg {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    transition: stroke 0.2s ease-in-out;
+}
+.links a:hover svg {
+    stroke: var(--color-primary); 
+}
+
+/* --- Theme Toggle Switch --- */
+.theme-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.theme-toggle-container .icon {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+.theme-toggle-container .icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-text);
+    vertical-align: middle;
+}
+html[data-theme='light'] .icon-sun {
+    opacity: 1;
+}
+html[data-theme='dark'] .icon-moon {
+    opacity: 1;
+}
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 48px;
+}
+.theme-switch input {
+    display: none;
+}
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 24px;
+}
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--color-primary);
+}
+input:checked + .slider:before {
+    transform: translateX(24px);
+}

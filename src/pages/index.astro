@@ -1,279 +1,48 @@
 ---
-// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Roman Boparai - Software Engineer</title>
-	</head>
-	<body>
-		<main>
-			<div class="theme-toggle-container">
-				<span class="icon icon-sun">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-				</span>
-
-				<label class="theme-switch" for="theme-toggle">
-					<input type="checkbox" id="theme-toggle" />
-					<span class="slider"></span>
-				</label>
-
-				<span class="icon icon-moon">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-				</span>
-			</div>
-			<header>
-				<img src="/images/romanboparai.jpg" alt="Roman Boparai" class="profile-pic" />
-				<div class="header-text">
-					<h1>Roman Boparai</h1>
-					<h2>Lead Software Engineer | C#, Java, C++ | Cross-Platform & Backend Systems</h2>					
-					<div class="links">
-						<a href="/resume" title="Resume">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-						</a>
-						&bull;
-						<a href="/contact" title="Contact">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-						</a>
-						&bull;
-						<a href="https://www.linkedin.com/in/ramnjit-boparai/" target="_blank" title="LinkedIn">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-						</a>
-						&bull;
-						<a href="https://github.com/Ramnjit/" target="_blank" title="GitHub">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-						</a>
-					</div>
-				</div>
-			</header>
-
-			<section>
-				<h3>About Me</h3>
-				<p>
-					I am a Lead Software Engineer with over 6.5 years of experience architecting and building high-performance applications. 
-					My expertise spans both cross-platform and backend systems, with a strong foundation in C#, Java, C++, and JavaScript.
-				</p>
-				<p>
-					My professional foundation was forged in the high-performance environment of AAA game development at Lost Boys Interactive, 
-					where I delivered full-stack features for the WWE 2K series using C++. I have since grown into a technical leadership role at Carl's Place, 
-					where I own projects from design to deployment across a versatile stack including C#, Python, and JavaScript. I stay current with modern mobile patterns 
-					through personal projects, such as a .NET MAUI application featuring native Android API integration.
-				</p>
-			</section>
-			
-			<section>
-				<h3>Projects</h3>
-				<ProjectCard
-					title="FoodFacts .NET MAUI App"
-					description="A cross-platform mobile app for searching food product data, featuring native Android notifications, a local SQLite database for favorites, and a themeable UI."
-					imgSrc="/images/foodfactsapp.gif"
-					tags={['C#', '.NET MAUI', 'MVVM', 'SQLite', 'Native Android']}
-					githubUrl="https://github.com/ramnjit/FoodFacts-MAUI-App"
-					liveUrl="https://github.com/ramnjit/FoodFacts-MAUI-App/releases"
-					imageFit="contain"
-					layout="horizontal"
-				/>
-                <ProjectCard
-					title="AI Learns to Play Flappy Bird"
-					description="A Unity simulation where an AI agent, powered by a Neural Network and a Genetic Algorithm, learns to play Flappy Bird over successive generations."
-					imgSrc="/images/gann.gif"
-					tags={['Unity', 'C#', 'AI', 'Neural Network', 'Genetic Algorithm']}
-					githubUrl="https://github.com/ramnjit/GeneticAlgorithmNeuralNetwork"
-					imageFit='contain'
-				/>
-				<ProjectCard
-					title="Python ETL Data Pipeline"
-					description="A simple daily ETL script that extracts weather data from a public API, performs a transformation, and loads the raw and processed data into an AWS S3 bucket."
-					tags={['Python', 'ETL', 'AWS S3', 'Boto3']}
-					githubUrl="https://github.com/ramnjit/daily-weather-pipeline"
-				/>
-
-				<ProjectCard
-					title="Python Web Crawlers"
-					description="A collection of simple web crawlers developed for university coursework, demonstrating the fundamentals of HTTP requests and HTML parsing with Beautiful Soup."
-					tags={['Python', 'Web Scraping', 'Beautiful Soup']}
-					githubUrl="https://github.com/ramnjit/webcrawlers"
-				/>
-			</section>
-		</main>
-	</body>
-</html>
-
-<script is:inline src="/scripts/theme-toggle.js"></script>
-
-<style>
-	html[data-theme='dark'] {
-		--color-text: #e2e8f0;
-		--color-primary: #ffc558;
-		background: #0d1117;
-	}
-
-	html[data-theme='dark'] main {
-		background: #161b22;
-		box-shadow: 0 4px 6px rgba(255,255,255,0.05);
-	}
-
-	html[data-theme='dark'] header {
-		border-bottom-color: #30363d;
-	}
-
-	html[data-theme='dark'] h2 {
-		color: #8b949e;
-	}
-	:root {
-		--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-		--font-serif: 'Georgia', serif;
-		--color-text: #333;
-		--color-primary: #0073b1;
-	}
-	body {
-		font-family: var(--font-sans);
-		color: var(--color-text);
-		line-height: 1.6;
-		margin: 0;
-		padding: 0;
-		background: var(--color-bg);
-		transition: background-color 0.3s ease, color 0.3s ease;
-	}
-	main {
-		max-width: 800px;
-		margin: 2rem auto;
-		padding: 2rem;
-		background: var(--color-card-bg);
-		border-radius: 8px;
-		box-shadow: 0 4px 6px var(--color-shadow);
-		transition: background-color 0.3s ease;
-		position: relative; 
-	}
-	header {
-		display: flex;
-		align-items: center;
-		text-align: left;
-		border-bottom: 1px solid #eee;
-		padding-bottom: 1rem;
-		margin-bottom: 2rem;
-	}
-    .profile-pic {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover; 
-        margin-right: 2rem;
-        border: 3px solid var(--color-primary);
-    }
-    .header-text {
-        flex-grow: 1;
-    }    
-
-	h1 {
-		margin: 0;
-		font-size: 2.5rem;
-	}
-	h2 {
-		margin: 0.5rem 0;
-		font-size: 1.2rem;
-		font-weight: 400;
-		color: #555;
-	}
-	h3 {
-		font-family: var(--font-serif);
-		border-bottom: 2px solid var(--color-primary);
-		padding-bottom: 0.5rem;
-		margin-top: 2rem;
-	}
-	a {
-		color: var(--color-primary);
-		text-decoration: none;
-	}
-	a:hover {
-		text-decoration: underline;
-	}
-	.links a {
-		margin: 0 0.5rem;
-	}
-	.links a svg {
-    vertical-align: middle;
-    transition: stroke 0.2s ease-in-out;
-	}
-	.links a:hover svg {
-		stroke: #333; 
-	}
-
-	.theme-toggle-container {
-		position: absolute;   
-		top: 1rem;
-		right: 1rem;
-		z-index: 999;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.theme-toggle-container .icon {
-		opacity: 0.5;
-		transition: opacity 0.3s ease;
-	}
-
-	.theme-toggle-container .icon svg {
-		width: 20px;
-		height: 20px;
-		stroke: var(--color-text);
-		vertical-align: middle;
-	}
-
-	html[data-theme='light'] .icon-sun {
-		opacity: 1;
-	}
-
-	html[data-theme='dark'] .icon-moon {
-		opacity: 1;
-	}
-
-	.theme-switch {
-		display: inline-block;
-		height: 24px;
-		position: relative;
-		width: 48px;
-	}
-
-	.theme-switch input {
-		display: none;
-	}
-
-	.slider {
-		background-color: #ccc;
-		bottom: 0;
-		cursor: pointer;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		transition: .4s;
-		border-radius: 24px;
-	}
-
-	.slider:before {
-		background-color: #fff;
-		bottom: 4px;
-		content: "";
-		height: 16px;
-		left: 4px;
-		position: absolute;
-		transition: .4s;
-		width: 16px;
-		border-radius: 50%;
-	}
-
-	input:checked + .slider {
-		background-color: var(--color-primary);
-	}
-
-	input:checked + .slider:before {
-		transform: translateX(24px);
-	}
-</style>
+<BaseLayout title="Roman Boparai - Lead Software Engineer">
+	<main>
+		<section>
+			<h3>About Me</h3>
+			<p>I am a Lead Software Engineer with over 6.5 years of experience architecting and building high-performance applications. My expertise spans both cross-platform and backend systems, with a strong foundation in C#, Java, C++, and JavaScript.</p>
+			<p>My professional foundation was forged in the high-performance environment of AAA game development at Lost Boys Interactive, where I delivered full-stack features for the WWE 2K series using C++. I have since grown into a technical leadership role at Carl's Place, where I own projects from design to deployment across a versatile stack including C#, Python, and JavaScript. I stay current with modern mobile patterns through personal projects, such as a .NET MAUI application featuring native Android API integration.</p>
+		</section>
+		
+		<section>
+			<h3>Projects</h3>
+			<ProjectCard
+				title="FoodFacts .NET MAUI App"
+				description="A cross-platform mobile app for searching food product data, featuring native Android notifications, a local SQLite database for favorites, and a themeable UI."
+				imgSrc="/images/foodfactsapp.gif"
+				tags={['C#', '.NET MAUI', 'MVVM', 'SQLite', 'Native Android']}
+				githubUrl="https://github.com/Ramnjit/FoodFacts-MAUI-App"
+				liveUrl="https://github.com/Ramnjit/FoodFacts-MAUI-App/releases"
+				imageFit="contain"
+				layout="horizontal"
+			/>
+			<ProjectCard
+				title="AI Learns to Play Flappy Bird"
+				description="A Unity simulation where an AI agent, powered by a Neural Network and a Genetic Algorithm, learns to play Flappy Bird over successive generations."
+				imgSrc="/images/gann.gif"
+				tags={['Unity', 'C#', 'AI', 'Neural Network', 'Genetic Algorithm']}
+				githubUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork"
+				imageFit='contain'
+			/>
+			<ProjectCard
+				title="Python ETL Data Pipeline"
+				description="A simple daily ETL script that extracts weather data from a public API, performs a transformation, and loads the raw and processed data into an AWS S3 bucket."
+				tags={['Python', 'ETL', 'AWS S3', 'Boto3']}
+				githubUrl="https://github.com/Ramnjit/daily-weather-pipeline"
+			/>
+			<ProjectCard
+				title="Python Web Crawlers"
+				description="A collection of simple web crawlers developed for university coursework, demonstrating the fundamentals of HTTP requests and HTML parsing with Beautiful Soup."
+				tags={['Python', 'Web Scraping', 'Beautiful Soup']}
+				githubUrl="https://github.com/Ramnjit/webcrawlers"
+			/>
+		</section>
+	</main>
+</BaseLayout>
