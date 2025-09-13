@@ -75,7 +75,9 @@ header {
 /* Name */
 h1 {
 	margin: 0;
-	font-size: 3.75rem;
+    padding-left: 0;
+    margin-left: -2px;
+	font-size: 3.5rem;
     line-height: 1.1;
 }
 
@@ -146,9 +148,14 @@ main {
 
 /* --- Theme Toggle Switch --- */
 .theme-toggle-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-left: auto;
 }
 .theme-toggle-container .icon {
     opacity: 0.5;

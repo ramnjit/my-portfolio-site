@@ -14,22 +14,24 @@ import ProjectCard from '../components/ProjectCard.astro';
 		<section>
 			<h3>Projects</h3>
 			<ProjectCard
-				title="FoodFacts .NET MAUI App"
-				description="A cross-platform mobile app for searching food product data, featuring native Android notifications, a local SQLite database for favorites, and a themeable UI."
-				imgSrc="/images/foodfactsapp.gif"
-				tags={['C#', '.NET MAUI', 'MVVM', 'SQLite', 'Native Android']}
-				githubUrl="https://github.com/Ramnjit/FoodFacts-MAUI-App"
-				liveUrl="https://github.com/Ramnjit/FoodFacts-MAUI-App/releases"
-				imageFit="contain"
-				layout="horizontal"
-			/>
-			<ProjectCard
 				title="AI Learns to Play Flappy Bird"
 				description="A Unity simulation where an AI agent, powered by a Neural Network and a Genetic Algorithm, learns to play Flappy Bird over successive generations."
 				imgSrc="/images/gann.gif"
 				tags={['Unity', 'C#', 'AI', 'Neural Network', 'Genetic Algorithm']}
 				githubUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork"
 				imageFit='contain'
+				liveUrl="/flappy-ai"
+				downloadUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork/releases" 
+			/>
+			<ProjectCard
+				title="FoodFacts .NET MAUI App"
+				description="A cross-platform mobile app for searching food product data, featuring native Android notifications, a local SQLite database for favorites, and a themeable UI."
+				imgSrc="/images/foodfactsapp.gif"
+				tags={['C#', '.NET MAUI', 'MVVM', 'SQLite', 'Native Android']}
+				githubUrl="https://github.com/Ramnjit/FoodFacts-MAUI-App"
+				downloadUrl="https://github.com/Ramnjit/FoodFacts-MAUI-App/releases"
+				imageFit="contain"
+				layout="horizontal"
 			/>
 			<ProjectCard
 				title="Python ETL Data Pipeline"

@@ -1,5 +1,4 @@
 ---
-
 interface Props {
 	title: string;
 	description: string;
@@ -7,15 +6,15 @@ interface Props {
 	tags: string[];
 	githubUrl: string;
 	liveUrl?: string;
+    downloadUrl?: string;
 	imageFit?: 'cover' | 'contain';
     layout?: 'vertical' | 'horizontal'; 
 }
 
-const { title, description, imgSrc, tags, githubUrl, liveUrl, imageFit, layout = 'vertical' } = Astro.props;
+const { title, description, imgSrc, tags, githubUrl, liveUrl, downloadUrl, imageFit, layout = 'vertical' } = Astro.props;
 ---
 
 <div class:list={["card", layout]}>
-    
     {imgSrc && <img src={imgSrc} alt={`Screenshot of ${title}`} class="card-img" style={`object-fit: ${imageFit ?? 'cover'};`} />}
     
     <div class="card-content">
@@ -27,8 +26,9 @@ const { title, description, imgSrc, tags, githubUrl, liveUrl, imageFit, layout =
             ))}
         </div>
         <div class="links">
-            <a href={githubUrl} target="_blank" class="button">View on GitHub</a>
-            {liveUrl && <a href={liveUrl} target="_blank" class="button">Live Demo / Download</a>}
+            <a href={githubUrl} target="_blank" class="button">View on GitHub</a>            
+            {downloadUrl && <a href={downloadUrl} target="_blank" class="button">Download</a>}
+            {liveUrl && <a href={liveUrl} target="_blank" class="button">Live Demo</a>}
         </div>
     </div>
 </div>
