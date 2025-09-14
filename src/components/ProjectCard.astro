@@ -135,4 +135,21 @@ header {
 .header-text {
     flex-grow: 1;
 }
+
+@media (max-width: 768px) {
+
+    .card.horizontal {
+        flex-direction: column;
+    }
+    .card.horizontal .card-img,
+    .card.horizontal .card-content {
+        width: 100%;
+        height: auto;
+    }
+    
+    .card.vertical .card-img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+}
 </style>

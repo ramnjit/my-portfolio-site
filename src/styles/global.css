@@ -35,7 +35,6 @@ body {
 	background: var(--color-bg);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 a {
 	color: var(--color-primary);
 	text-decoration: none;
@@ -105,7 +104,7 @@ main {
 	border-radius: 8px;
 	box-shadow: 0 4px 6px var(--color-shadow);
     transition: background-color 0.3s ease;
-	position: relative;
+    position: relative;
 }
 
 /* ============================================= */
@@ -146,17 +145,16 @@ main {
     stroke: var(--color-primary); 
 }
 
-/* --- Theme Toggle Switch --- */
 .theme-toggle-container {
-    position: fixed;
+    position: absolute;
     top: 1rem;
     right: 1rem;
-    z-index: 999;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-left: auto;
 }
+
 .theme-toggle-container .icon {
     opacity: 0.5;
     transition: opacity 0.3s ease;
@@ -209,4 +207,56 @@ input:checked + .slider {
 }
 input:checked + .slider:before {
     transform: translateX(24px);
+}
+
+/* ============================================= */
+/* == MOBILE RESPONSIVE STYLES == */
+/* ============================================= */
+@media (max-width: 768px) {
+    
+    main {
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1rem auto 0 auto;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+        margin-right: 0;
+    }
+
+    .header-text {
+        align-items: center;
+        text-align: center;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+    .card.horizontal {
+        flex-direction: column;
+    }
+    .card.horizontal .card-img,
+    .card.horizontal .card-content {
+        width: 100%;
+    }
+
+    .subheader {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card .button {
+    display: block;
+    width: 90%;
+    margin: 0.5rem auto 0 auto;
+    text-align: center;
+    }
 }
