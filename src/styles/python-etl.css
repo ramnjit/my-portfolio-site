@@ -1,0 +1,128 @@
+/* === Main Page Layout === */
+main {
+    text-align: center;
+    max-width: 960px; 
+}
+h3 {
+    margin-top: 2rem;
+}
+
+/* === Demo Controls (Dropdown & Button) === */
+.demo-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    background: var(--color-bg);
+    border-radius: 8px;
+}
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: var(--icon-arrow);
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1em;
+    padding: 0.8rem 2.5rem 0.8rem 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: var(--color-card-bg);
+    color: var(--color-text);
+    margin: 0 0.5rem;
+}
+
+/* === Results Box === */
+.results-box {
+    background: var(--color-bg);
+    border: 1px dashed var(--color-primary);
+    border-radius: 8px;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+.results-header {
+    position: relative; 
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.results-box h4 {
+    color: #28a745;
+    margin-bottom: 0;
+}
+
+/* === Results Data Styling === */
+.results-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.data-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+}
+.data-item svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+.data-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* === Unit Toggle Switch === */
+.unit-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);    
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.unit-toggle span {
+    font-weight: bold;
+    color: var(--color-text);
+}    
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 48px;
+}
+.theme-switch input { 
+    display: none; 
+}
+.slider {
+    background-color: #ccc;
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transition: .4s;
+    border-radius: 24px;
+}
+.slider:before {
+    background-color: #fff;
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--color-primary);
+}
+input:checked + .slider:before {
+    transform: translateX(24px);
+}

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/python-etl.css';
+
+// Live URL for your deployed Flask API
+const API_ENDPOINT = "http://rboparai-etl-api.us-east-2.elasticbeanstalk.com/run-pipeline";
+---
+<BaseLayout title="Python ETL Demo">
+	<main data-api-endpoint={API_ENDPOINT}>
+		<h3>Python ETL Data Pipeline</h3>
+		<p>
+			This is a live demo of my Python data pipeline. Select a city from the dropdown and click the button to run the live process. This will send a request to a Flask API hosted on AWS Elastic Beanstalk, which runs the Python script, uploads files to AWS S3, and returns the processed data.
+		</p>
+        <div class="demo-controls">
+            <label for="etl-city-select">Select a City:</label>
+            <select id="etl-city-select">
+                <option value="chicago">Chicago</option>
+                <option value="new_york">New York</option>
+                <option value="london">London</option>
+            </select>
+            <button id="run-etl-button" class="button">Run Pipeline</button>
+
+
+        </div>
+
+        <div id="etl-results" class="results-box"></div>
+	</main>
+    <script is:inline src="/scripts/python-etl-demo.js"></script>
+</BaseLayout>
+

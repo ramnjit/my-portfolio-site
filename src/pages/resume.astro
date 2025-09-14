@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/resume.css';
 ---
 
 <BaseLayout title="Resume - Roman Boparai">
@@ -12,20 +13,3 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <img src="/images/resume.svg" alt="Roman Boparai's Resume" class="resume-image" />
 	</main>
 </BaseLayout>
-
-<style>
-	.page-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 1.5rem;
-	}
-	.page-header h3 {
-		margin: 0;
-        border: none;
-	}
-	.resume-image {
-		width: 100%;
-		border: 1px solid #eee;
-	}
-</style>

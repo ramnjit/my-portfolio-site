@@ -26,9 +26,23 @@ const { title, description, imgSrc, tags, githubUrl, liveUrl, downloadUrl, image
             ))}
         </div>
         <div class="links">
-            <a href={githubUrl} target="_blank" class="button">View on GitHub</a>            
-            {downloadUrl && <a href={downloadUrl} target="_blank" class="button">Download</a>}
-            {liveUrl && <a href={liveUrl} target="_blank" class="button">Live Demo</a>}
+            <a href={githubUrl} target="_blank" class="button">View on GitHub</a>
+            {downloadUrl && (
+                <a 
+                    href={downloadUrl} 
+                    target={downloadUrl.startsWith('http') ? '_blank' : '_self'} 
+                    class="button">
+                    Download
+                </a>
+            )}
+            {liveUrl && (
+                <a 
+                    href={liveUrl} 
+                    target={liveUrl.startsWith('http') ? '_blank' : '_self'} 
+                    class="button">
+                    Live Demo
+                </a>
+            )}
         </div>
     </div>
 </div>

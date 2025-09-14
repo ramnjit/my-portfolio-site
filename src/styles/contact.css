@@ -1,0 +1,28 @@
+    .contact-form {
+        margin-top: 2rem;
+    }
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: var(--font-sans);
+        font-size: 1rem;        
+        background-color: var(--color-card-bg);
+        color: var(--color-text);
+    }
+
+    .contact-form .button {
+        display: block;
+        margin: 1rem auto 0 auto;
+    }

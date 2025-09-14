@@ -1,0 +1,14 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.page-header h3 {
+    margin: 0;
+    border: none;
+}
+.resume-image {
+    width: 100%;
+    border: 1px solid #eee;
+}
