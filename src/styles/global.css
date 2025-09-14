@@ -210,6 +210,9 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(24px);
 }
+.source-link-container {
+    text-align: right;
+}
 
 /* ============================================= */
 /* == MOBILE RESPONSIVE STYLES == */
