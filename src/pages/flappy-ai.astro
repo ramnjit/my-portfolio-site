@@ -20,11 +20,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
     main {
-        text-align: center;        
-        max-width: 960px; 
+        text-align: center;
+        max-width: 960px;
     }
     iframe {
         margin-top: 1.5rem;
-        border: 1px solid #ccc;        
+        border: 1px solid #ccc;
+    }
+    
+    @media (max-width: 768px) {
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 960 / 560;
+        }
     }
 </style>
