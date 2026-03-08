@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/erp-demo.css';
+---
+
+<BaseLayout title="ERP Modernization Demo - Roman Boparai">
+    <main>
+        <div class="erp-header">
+            <h3>Architecture Demo: Legacy vs. Cloud-Native</h3>
+            <p class="subtitle">Demonstrating the Strangler Fig Pattern & Command Query Responsibility Segregation (CQRS)</p>
+        </div>
+
+        <div class="race-controls">
+            <button id="btnRaceBoth" class="btn-race">🏁 RACE BOTH ENGINES 🏁</button>
+        </div>
+
+        <div class="demo-grid">
+            <div class="demo-card legacy">
+                <h4>1. The Monolith</h4>
+                <p class="subtitle" style="font-size: 0.85em; height: 35px;">On-Prem SQLite • Heavy SQL JOINs</p>
+                <button id="btnLegacy" class="button btn-legacy">Fetch (Legacy)</button>
+                
+                <div style="height: 60px; display: flex; align-items: center; justify-content: center; margin: 15px 0;">
+                    <div id="loaderLegacy" class="loader"></div>
+                    <div class="timer" id="timerLegacy" style="margin: 0;">0ms</div>
+                </div>
+
+                <div class="console" id="consoleLegacy">Awaiting execution...</div>
+            </div>
+
+            <div class="demo-card cloud">
+                <h4>2. The Azure Cloud</h4>
+                <p class="subtitle" style="font-size: 0.85em; height: 35px;">NoSQL Read Model • O(1) Fetch</p>
+                <button id="btnCloud" class="button btn-cloud">Fetch (Modern)</button>
+                
+                <div style="height: 60px; display: flex; align-items: center; justify-content: center; margin: 15px 0;">
+                    <div id="loaderCloud" class="loader"></div>
+                    <div class="timer" id="timerCloud" style="margin: 0;">0ms</div>
+                </div>
+
+                <div class="console" id="consoleCloud">Awaiting execution...</div>
+            </div>
+        </div>
+
+        <div class="lookup-section">
+            <h4>O(1) Cloud Fetch Demonstration</h4>
+            <p class="subtitle">Retrieve a single product instantly from the Azure NoSQL Read Model.</p>
+            
+            <p id="skuHint" style="font-size: 0.85em; color: #8b949e; margin-bottom: 15px;"><em>Tip: Run a Catalog Fetch above to generate clickable SKU recommendations!</em></p>
+            
+            <div id="recommendedSkusContainer" style="display: none; margin-bottom: 20px;">
+                <span style="color: #a0a0a0; font-size: 0.9em; margin-right: 10px;">Recommended SKUs:</span>
+                <span id="skuButtonsList"></span>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="skuInput" placeholder="Enter SKU (e.g., 1234567890123)" value="">
+                <button id="btnLookup" class="button btn-cloud" style="width: auto;">Fetch From Cloud</button>
+            </div>
+            
+            <div style="height: 60px; display: flex; align-items: center; justify-content: center; margin: 15px 0;">
+                <div id="loaderLookup" class="loader"></div>
+                <div class="timer" id="timerLookup" style="font-size: 2.5em; margin: 0;">0ms</div>
+            </div>
+
+            <div class="console console-small" id="consoleLookup" style="max-width: 800px; margin: 0 auto; height: 160px;">Awaiting execution...</div>
+        </div>
+    </main>
+    <script is:inline src="/scripts/erp-demo.js"></script>
+</BaseLayout>
