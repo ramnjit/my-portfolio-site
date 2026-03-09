@@ -16,7 +16,7 @@ import '../styles/erp-demo.css';
 
         <div class="demo-grid">
             <div class="demo-card legacy">
-                <h4>1. The Monolith</h4>
+                <h4>Legacy ERP Backend</h4>
                 <p class="subtitle" style="font-size: 0.85em; height: 35px;">On-Prem SQLite • Heavy SQL JOINs</p>
                 <button id="btnLegacy" class="button btn-legacy">Fetch (Legacy)</button>
                 
@@ -29,7 +29,7 @@ import '../styles/erp-demo.css';
             </div>
 
             <div class="demo-card cloud">
-                <h4>2. The Azure Cloud</h4>
+                <h4>Modern Azure Backend</h4>
                 <p class="subtitle" style="font-size: 0.85em; height: 35px;">NoSQL Read Model • O(1) Fetch</p>
                 <button id="btnCloud" class="button btn-cloud">Fetch (Modern)</button>
                 
@@ -42,15 +42,25 @@ import '../styles/erp-demo.css';
             </div>
         </div>
 
+        <div class="performance-context" style="margin: 2rem auto; max-width: 800px; padding: 1.5rem; background-color: #1e1e24; border-left: 4px solid #4f46e5; border-radius: 6px; color: #e2e8f0; text-align: left; line-height: 1.6; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h4 style="margin-top: 0; color: #ffffff; font-size: 1.1em; margin-bottom: 10px;">📊 Why does the Legacy ERP sometimes win? (Latency vs. Throughput)</h4>
+            <p style="margin-bottom: 12px; font-size: 0.9em;">
+                In a 1-on-1 race, you might occasionally see the legacy system tie or beat the cloud API by a few milliseconds. Why? Because for a single request, we are mostly measuring the unpredictable "weather" of the internet, like physical distance and routing paths, rather than the actual speed of the database. It is like two cars racing across town. Sometimes the slower car just catches more green lights.
+            </p>
+            <p style="margin-bottom: 0; font-size: 0.9em;">
+                <strong>So why migrate to the cloud?</strong> The answer is scale. A legacy relational database is like a one-lane road. It works fine for one car, but if 10,000 users arrive at once, the system bottlenecks and crashes. The Azure NoSQL read model is a 100-lane superhighway. It might not make a single car travel faster, but it guarantees thousands of concurrent users get their data instantly without bringing the system down.
+            </p>
+        </div>
+
         <div class="lookup-section">
             <h4>O(1) Cloud Fetch Demonstration</h4>
             <p class="subtitle">Retrieve a single product instantly from the Azure NoSQL Read Model.</p>
             
             <p id="skuHint" style="font-size: 0.85em; color: #8b949e; margin-bottom: 15px;"><em>Tip: Run a Catalog Fetch above to generate clickable SKU recommendations!</em></p>
             
-            <div id="recommendedSkusContainer" style="display: none; margin-bottom: 20px;">
-                <span style="color: #a0a0a0; font-size: 0.9em; margin-right: 10px;">Recommended SKUs:</span>
-                <span id="skuButtonsList"></span>
+            <div id="recommendedSkusContainer" style="display: none; margin-bottom: 20px; flex-direction: column; align-items: center;">
+                <div style="color: #a0a0a0; font-size: 0.9em; margin-bottom: 8px;">Recommended SKUs:</div>                
+                <div id="skuButtonsList" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px;"></div>
             </div>
             
             <div class="search-box">
