@@ -5,9 +5,11 @@ import '../styles/erp-demo.css';
 
 <BaseLayout title="ERP Modernization Demo - Roman Boparai">
     <main>
+        <h3 style="text-align: center;">Architecture Demo: Legacy vs. Cloud-Native</h3>
         <div class="erp-header" style="text-align: center; margin-bottom: 2rem;">
-            <h3>Architecture Demo: Legacy vs. Cloud-Native</h3>
-            <p class="subtitle">Demonstrating the Strangler Fig Pattern & Command Query Responsibility Segregation (CQRS)</p>
+            <p class="subtitle" style="color: #ffffff; font-size: 1.05em; margin-bottom: 0; margin-top: 15px;">
+                Demonstrating the Strangler Fig Pattern & Command Query Responsibility Segregation (CQRS)
+            </p>
         </div>
 
         <div class="demo-instructions" style="margin: 0 auto 2.5rem auto; max-width: 700px; padding: 1.2rem 1.5rem; background-color: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.3); border-radius: 8px; color: #e2e8f0; text-align: left; line-height: 1.6;">
@@ -71,9 +73,9 @@ import '../styles/erp-demo.css';
 
         <div class="lookup-section">
             <h4>O(1) Cloud Fetch Demonstration</h4>
-            <p class="subtitle">Retrieve a single product instantly from the Azure NoSQL Read Model.</p>
+            <p class="subtitle" style="color: #ffffff; font-size: 0.95em;">Retrieve a single product instantly from the Azure NoSQL Read Model.</p>
             
-            <p id="skuHint" style="font-size: 0.85em; color: #8b949e; margin-bottom: 15px;"><em>Tip: Run a Catalog Fetch above to generate clickable SKU recommendations!</em></p>
+            <p id="skuHint" style="font-size: 0.85em; color: #ffffff; margin-bottom: 15px;"><em>Tip: Run a Catalog Fetch above to generate clickable SKU recommendations!</em></p>
             
             <div id="recommendedSkusContainer" style="display: none; margin-bottom: 20px; flex-direction: column; align-items: center;">
                 <div style="color: #a0a0a0; font-size: 0.9em; margin-bottom: 8px;">Recommended SKUs:</div>                
@@ -144,11 +146,11 @@ import '../styles/erp-demo.css';
 
             // Filled Button Hover Effects
             btnOpen.addEventListener('mouseover', () => {
-                btnOpen.style.backgroundColor = '#4338ca'; // Darker indigo on hover
+                btnOpen.style.backgroundColor = '#4338ca'; 
                 btnOpen.style.borderColor = '#4338ca';
             });
             btnOpen.addEventListener('mouseout', () => {
-                btnOpen.style.backgroundColor = '#4f46e5'; // Return to original
+                btnOpen.style.backgroundColor = '#4f46e5'; 
                 btnOpen.style.borderColor = '#4f46e5';
             });
 
@@ -160,15 +162,14 @@ import '../styles/erp-demo.css';
                 modal.style.visibility = 'visible';
                 modal.style.opacity = '1';
                 modalContent.style.transform = 'translateY(0)';
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden'; 
             };
 
             const closeModal = () => {
                 modal.style.opacity = '0';
                 modalContent.style.transform = 'translateY(20px)';
-                document.body.style.overflow = ''; // Restore scrolling
+                document.body.style.overflow = ''; 
                 
-                // Wait for transition to finish before hiding completely
                 setTimeout(() => {
                     modal.style.visibility = 'hidden';
                 }, 300);
@@ -177,14 +178,12 @@ import '../styles/erp-demo.css';
             btnOpen.addEventListener('click', openModal);
             btnClose.addEventListener('click', closeModal);
 
-            // Close when clicking outside the modal content
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     closeModal();
                 }
             });
 
-            // Close on Escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.style.visibility === 'visible') {
                     closeModal();

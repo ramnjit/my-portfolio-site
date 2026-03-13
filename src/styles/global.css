@@ -1,28 +1,25 @@
 /* ============================================= */
-/* == VARIABLES & THEME DEFINITIONS == */
+/* == VARIABLES & THEME DEFINITIONS (DARK MODE) == */
 /* ============================================= */
 :root {
-	--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-	--font-serif: 'Georgia', serif;
-	--color-text: #333;
-	--color-primary: #0073b1;
-    --color-bg: #f4f4f4;
-    --color-card-bg: white;
-    --color-shadow: rgba(0,0,0,0.1);
-    --color-tag-bg: #e0eafc;
-    --color-tag-text: #3b82f6;
-    --icon-arrow: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-}
-
-html[data-theme='dark'] {
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: 'Georgia', serif;
+    
+    /* Dark Mode Colors are now the permanent default */
     --color-text: #e2e8f0;
-    --color-primary: #ffc558;
+    --color-primary: #ffc558; /* This is your Yellow accent color */
     --color-bg: #0d1117;
     --color-card-bg: #161b22;
-    --color-shadow: rgba(255,255,255,0.05);
+    --color-shadow: rgba(0,0,0,0.5); /* Deepened shadow for dark background */
     --color-tag-bg: #423d21;
     --color-tag-text: #ffc558;
+    
     --icon-arrow: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e2e8f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* Force hide the toggle switch in the corner */
+.theme-toggle-container {
+    display: none !important;
 }
 
 /* ============================================= */
