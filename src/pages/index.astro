@@ -7,21 +7,17 @@ import ProjectCard from '../components/ProjectCard.astro';
 	<main>
 		<section>
 			<h3>About Me</h3>
-			<p>I am a Senior Software Engineer and Systems Architect with 8+ years of experience building scalable backend platforms, intelligent data pipelines, and robust internal tooling. I specialize in bridging the gap between modern cloud architectures and complex legacy systems, ensuring high-availability infrastructure for data-driven businesses.</p>
+			<p>I am a Senior Software Engineer with over 8 years of experience designing backend systems, data pipelines, and cloud infrastructure. My focus is on pragmatic engineering: designing scalable architectures, optimizing complex systems, and delivering resilient software that drives business growth.</p>
 
-			<p>My engineering philosophy is built on operational velocity and risk management: I build the future while keeping current operations running flawlessly.</p>
-
-			<p>Recently, as a Lead Software Engineer in the manufacturing and e-commerce space, I architected a modern Internal Tools Platform (Node.js/Azure) to automate complex product configuration logic, while simultaneously managing technical debt and providing architectural oversight for a legacy C#/.NET ERP system. Prior to this, I owned end-to-end API architectures and high-volume data pipelines for AAA live-service ecosystems reaching millions of users.</p>
+			<p>Recently, as a Lead Software Engineer in the manufacturing and e-commerce space, I built a Node.js/Azure platform to automate complex product configuration logic while managing the technical debt of a legacy C#/.NET ERP. Before that, I designed end-to-end API architectures and ETL pipelines for AAA live-service gaming ecosystems supporting millions of concurrent users.</p>
 
 			<h3>Core Technical Competencies:</h3>
 			<ul>
-				<li><strong>Backend & Systems Architecture:</strong> Python (Flask), Node.js (TypeScript), C# / .NET Core, C++, REST API Orchestration, Microservices.</li>
-				<li><strong>Data Engineering & Integrations:</strong> SQL (PostgreSQL, Raw SQL, SQLAlchemy), custom ETL pipelines, ERP oversight, third-party API integrations (Braintree, OAuth).</li>
-				<li><strong>Cloud & DevOps:</strong> Microsoft Azure, AWS (S3/Lambda), Docker, CI/CD, Git, Linux environments.</li>
-				<li><strong>Technical Leadership:</strong> Agile/Scrum methodologies, Jira/Confluence workflow management, strict code reviews, pair-debugging, and mentoring engineering teams to hit critical delivery deadlines.</li>
+				<li><strong>Backend & APIs:</strong> Python (FastAPI/Flask), Node.js (TypeScript), C# / .NET Core, REST, Microservices, CQRS.</li>
+				<li><strong>Data & Infrastructure:</strong> SQL (PostgreSQL), NoSQL, Pandas, ETL pipelines, Microsoft Azure, AWS (S3/Lambda), Docker.</li>
+				<li><strong>Leadership & Delivery:</strong> Agile/Scrum, CI/CD, cross-functional architectural planning, strict code reviews, and mentoring engineering teams.</li>
 			</ul>
 
-			<p>Whether I am designing headless data scripts for a manufacturing floor, launching highly monetized native applications, or leading a software team through an Agile sprint, my goal is always to ship secure, performant software that directly solves complex business problems.</p>
 			<div class="source-link-container">
 				<a 
 					href="https://github.com/Ramnjit/my-portfolio-site" 
@@ -34,13 +30,21 @@ import ProjectCard from '../components/ProjectCard.astro';
 			</div>
 		</section>
 		
-		<section>
+		<section class="projects-section" style="margin-top: 1.5rem;">
 			<h3>Projects</h3>
 			<ProjectCard
+				title="Claims Analytics API"
+				description="A Python data pipeline and REST API demonstrating an enterprise ETL ingestion workflow. Uses Pandas to extract, clean, and risk-score 100k+ synthetic records, serving the structured data via a strictly paginated FastAPI backend."
+				imgSrc="/images/claims-demo.gif" 
+				tags={['Python', 'FastAPI', 'Pandas', 'Azure', 'ETL', 'SQLite']}
+				githubUrl="https://github.com/ramnjit/enterprise-data-pipeline"
+				liveUrl="/claims-analytics"
+			/>
+			<ProjectCard
 				title="Enterprise ERP Modernization Demo"
-				description="A complete Strangler Fig architecture demonstrating the migration of a legacy on-premise ERP to a scalable Azure Serverless backend, achieving massive performance gains."
+				description="An architectural demo of the Strangler Fig pattern. Compares the read-latency of a legacy, heavily-normalized SQL database against a decoupled Azure NoSQL read model to demonstrate O(1) fetch times."
 				imgSrc="/images/erp-demo.gif"
-				tags={['C#', '.NET 9', 'Azure Functions', 'NoSQL', 'ETL', 'CQRS']}
+				tags={['C#', '.NET 9', 'Azure Functions', 'NoSQL', 'CQRS']}
 				githubUrl="https://github.com/ramnjit/enterprise-erp-modernization-demo"
 				liveUrl="/erp-modernization"
 			/>
@@ -52,7 +56,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 				githubUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork"
 				imageFit='contain'
 				liveUrl="/flappy-ai"
-				downloadUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork/releases" 
+				downloadUrl="https://github.com/Ramnjit/GeneticAlgorithmNeuralNetwork/releases/download/v1.0/Build.zip"
 			/>
 		</section>
 	</main>

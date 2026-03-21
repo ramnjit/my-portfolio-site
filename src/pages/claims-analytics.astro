@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/claims-demo.css';
+---
+
+<BaseLayout title="Claims Analytics API Demo - Roman Boparai">
+    <main>
+        <h3 style="text-align: center;">Claims Analytics API</h3>
+        <div class="header-container" style="text-align: center; margin-bottom: 2rem;">
+            <p class="subtitle" style="color: #ffffff; font-size: 1.05em; margin-bottom: 0; margin-top: 15px;">
+                FastAPI Backend • Pandas ETL • Azure App Service
+            </p>
+        </div>
+
+        <div class="demo-instructions" style="margin: 0 auto 2.5rem auto; max-width: 700px; padding: 1.2rem 1.5rem; background-color: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.3); border-radius: 8px; color: #e2e8f0; text-align: left; line-height: 1.6;">
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <div style="width: 10px; height: 10px; border-radius: 50%; background-color: #10b981; margin-right: 10px; box-shadow: 0 0 8px #10b981;"></div>
+                <h4 style="margin: 0; color: #818cf8; font-size: 1.05em; font-weight: 600;">Live Environment</h4>
+            </div>
+            
+            <p style="margin: 0 0 15px 0; font-size: 0.95em;">
+                This dashboard connects to a live FastAPI service hosted on Azure. It serves a database of synthetic insurance claims that have been processed and risk-scored through a Python ETL pipeline.
+            </p>
+
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 18px;">
+                <button id="btnOpenDocs" style="width: 280px; justify-content: center; background-color: #4f46e5; border: 1px solid #4f46e5; color: #ffffff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85em; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.15); display: inline-flex; align-items: center; gap: 8px;">
+                    View Architecture Notes
+                </button>
+                <a id="btnGitHub" href="https://github.com/ramnjit/enterprise-data-pipeline" target="_blank" rel="noopener noreferrer" style="width: 160px; justify-content: center; background-color: #24292e; border: 1px solid #30363d; color: #ffffff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85em; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.15); display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                    <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                    </svg>
+                    GitHub Repo
+                </a>
+            </div>
+        </div>
+
+        <div class="dashboard-controls">
+            <button id="btnRefreshData" class="btn-refresh btn-run">▶ Run Query</button>
+        </div>
+
+        <div class="status-wrapper">
+            <span id="apiStatus" class="api-status standby">⚪ System Standby</span>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-title">Total Claims Processed</div>
+                <div class="kpi-value" id="valTotalClaims">--</div>
+                <div class="loader-small" id="load1"></div>
+            </div>
+            <div class="kpi-card alert">
+                <div class="kpi-title">High-Risk Fraud Flags</div>
+                <div class="kpi-value" id="valFraudFlags">--</div>
+                <div class="loader-small" id="load2"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Total Payout Volume</div>
+                <div class="kpi-value" id="valPayout">--</div>
+                <div class="loader-small" id="load3"></div>
+            </div>
+        </div>
+
+        <div class="feed-section" id="feedSection" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; flex-wrap: wrap; gap: 15px;">
+                <div>
+                    <h4>Live Incident Feed</h4>
+                    <p class="subtitle" style="font-size: 0.85em; margin-bottom: 0;">Streaming from Azure SQLite backend.</p>
+                </div>
+                
+                <div style="background: rgba(96, 165, 250, 0.05); border-left: 3px solid #60a5fa; padding: 10px 15px; border-radius: 4px; max-width: 450px; font-size: 0.85em; color: #c9d1d9;">
+                    <strong style="color: #60a5fa;">Note:</strong> To prevent client-side Out-Of-Memory (OOM) errors, this feed implements strict server-side pagination (offset/limit) with infinite scrolling.
+                </div>
+            </div>
+
+            <div class="feed-controls" style="display: flex; justify-content: space-between; align-items: center; background: var(--color-card-bg); padding: 12px 15px; border-radius: 8px 8px 0 0; border: 1px solid #30363d; border-bottom: none; flex-wrap: wrap; gap: 10px;">
+                <div style="display: flex; gap: 10px;">
+                    <button class="filter-btn active" data-filter="recent">All Claims</button>
+                    <button class="filter-btn" data-filter="flagged">High-Risk Only</button>
+                    <button class="filter-btn" data-filter="standard">Standard Only</button>
+                </div>
+                <button id="btnExport" class="btn-export">Export to CSV</button>
+            </div>
+
+            <div class="console feed-console" id="consoleFeed" style="border-radius: 0 0 8px 8px; border-top: 1px solid #30363d;">
+                <div id="feedContent"></div>
+                <div id="scrollLoader" style="text-align: center; padding: 15px; color: #8b949e; display: none;">
+                    Fetching next 50 records...
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="specsModal" class="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
+        <div class="modal-content" style="background-color: #1a1a20; width: 90%; max-width: 850px; max-height: 85vh; overflow-y: auto; border: 1px solid #2d2d35; border-radius: 8px; padding: 2.5rem; position: relative; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); transform: translateY(20px); transition: transform 0.3s ease;">
+            
+            <button id="btnCloseModal" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #8b949e; font-size: 1.5rem; cursor: pointer; transition: color 0.2s ease;">&times;</button>
+
+            <h3 style="margin-top: 0; color: #ffffff; font-size: 1.4em; margin-bottom: 25px; border-bottom: 1px solid #2d2d35; padding-bottom: 15px;">System Architecture</h3>
+
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">The Problem</h4>
+            <p style="margin-bottom: 20px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
+                Raw, unstructured data dumps are difficult to query and nearly impossible to triage manually. Attempting to load or visualize 100,000+ unindexed rows directly often causes standard BI tools and web clients to crash.
+            </p>
+
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">1. ETL Pipeline (Pandas)</h4>
+            <p style="margin-bottom: 20px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
+                To structure the data, a Python ETL script uses <strong>Pandas</strong> to ingest the raw CSV, drop malformed records, and apply business logic (flagging claims over $50,000 for review). This sanitized dataset is then committed to a read-optimized SQLite database.
+            </p>
+
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">2. API Layer (FastAPI on Azure)</h4>
+            <p style="margin-bottom: 20px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
+                The backend is built with <strong>FastAPI</strong> and deployed to a <strong>Microsoft Azure App Service (Linux)</strong> container. It uses an ASGI web server (Uvicorn) to handle asynchronous database reads and aggregations quickly.
+            </p>
+
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">3. Defensive Frontend Design</h4>
+            <p style="margin-bottom: 10px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
+                The UI implements a few defensive patterns to protect server and client resources:
+            </p>
+            <ul style="margin-bottom: 20px; font-size: 0.95em; color: #e2e8f0; line-height: 1.6; padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Execution Gating:</strong> The UI initializes in "Standby". Users must explicitly click "Run Query" to fetch data, preventing unnecessary database hits on accidental page loads.</li>
+                <li style="margin-bottom: 8px;"><strong>Server-Side Pagination:</strong> The infinite scroll UI passes `OFFSET` and `LIMIT` parameters to the API, fetching data in 50-record chunks rather than requesting the entire database at once.</li>
+                <li style="margin-bottom: 0;"><strong>CSV Export:</strong> Since web UIs aren't ideal for deep analysis, a simple export function allows analysts to pull the current filtered view for use in Excel or Python notebooks.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script is:inline src="/scripts/claims-demo.js"></script>
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnOpen = document.getElementById('btnOpenDocs');
+            const btnClose = document.getElementById('btnCloseModal');
+            const modal = document.getElementById('specsModal');
+            const modalContent = modal.querySelector('.modal-content');
+            const btnGitHub = document.getElementById('btnGitHub');
+
+            btnOpen.addEventListener('mouseover', () => {
+                btnOpen.style.backgroundColor = '#4338ca'; 
+                btnOpen.style.borderColor = '#4338ca';
+            });
+            btnOpen.addEventListener('mouseout', () => {
+                btnOpen.style.backgroundColor = '#4f46e5'; 
+                btnOpen.style.borderColor = '#4f46e5';
+            });
+            
+            btnGitHub.addEventListener('mouseover', () => {
+                btnGitHub.style.backgroundColor = '#30363d'; 
+                btnGitHub.style.borderColor = '#8b949e';
+            });
+            btnGitHub.addEventListener('mouseout', () => {
+                btnGitHub.style.backgroundColor = '#24292e'; 
+                btnGitHub.style.borderColor = '#30363d';
+            });
+
+            btnClose.addEventListener('mouseover', () => btnClose.style.color = '#ffffff');
+            btnClose.addEventListener('mouseout', () => btnClose.style.color = '#8b949e');
+
+            const openModal = () => {
+                modal.style.visibility = 'visible';
+                modal.style.opacity = '1';
+                modalContent.style.transform = 'translateY(0)';
+                document.body.style.overflow = 'hidden'; 
+            };
+            const closeModal = () => {
+                modal.style.opacity = '0';
+                modalContent.style.transform = 'translateY(20px)';
+                document.body.style.overflow = ''; 
+                
+                setTimeout(() => {
+                    modal.style.visibility = 'hidden';
+                }, 300);
+            };
+
+            btnOpen.addEventListener('click', openModal);
+            btnClose.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.visibility === 'visible') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</BaseLayout>

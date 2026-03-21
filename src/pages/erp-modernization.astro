@@ -8,35 +8,35 @@ import '../styles/erp-demo.css';
         <h3 style="text-align: center;">Architecture Demo: Legacy vs. Cloud-Native</h3>
         <div class="erp-header" style="text-align: center; margin-bottom: 2rem;">
             <p class="subtitle" style="color: #ffffff; font-size: 1.05em; margin-bottom: 0; margin-top: 15px;">
-                Demonstrating the Strangler Fig Pattern & Command Query Responsibility Segregation (CQRS)
+                Strangler Fig Pattern • CQRS • Azure NoSQL
             </p>
         </div>
 
         <div class="demo-instructions" style="margin: 0 auto 2.5rem auto; max-width: 700px; padding: 1.2rem 1.5rem; background-color: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.3); border-radius: 8px; color: #e2e8f0; text-align: left; line-height: 1.6;">
             <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 1.2em; margin-right: 8px;">⏱️</span>
-                <h4 style="margin: 0; color: #818cf8; font-size: 1.05em; font-weight: 600;">Live Performance Test</h4>
+                <div style="width: 10px; height: 10px; border-radius: 50%; background-color: #10b981; margin-right: 10px; box-shadow: 0 0 8px #10b981;"></div>
+                <h4 style="margin: 0; color: #818cf8; font-size: 1.05em; font-weight: 600;">Live Benchmarking</h4>
             </div>
             
             <p style="margin: 0 0 15px 0; font-size: 0.95em;">
-                This dashboard simulates the latency difference between a bogged-down legacy SQL monolith and a decoupled Azure NoSQL read model. Click <strong style="color: #ffffff;">RACE BOTH ENGINES</strong> below for a simultaneous head-to-head stress test, or fetch from the databases individually to compare baseline execution times.
+                This dashboard simulates the latency difference between a legacy SQL monolith and a decoupled Azure NoSQL read model. Click <strong>Run Head-to-Head Test</strong> below for a simultaneous stress test, or fetch from the databases individually to compare baseline execution times.
             </p>
 
             <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 18px;">
                 <button id="btnOpenDocs" style="width: 280px; justify-content: center; background-color: #4f46e5; border: 1px solid #4f46e5; color: #ffffff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85em; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.15); display: inline-flex; align-items: center; gap: 8px;">
-                    ⚙️ Read Full Architecture Breakdown
+                    View Architecture Notes
                 </button>
                 <a id="btnGitHub" href="https://github.com/ramnjit/enterprise-erp-modernization-demo" target="_blank" rel="noopener noreferrer" style="width: 160px; justify-content: center; background-color: #24292e; border: 1px solid #30363d; color: #ffffff; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85em; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.15); display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
                     <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
                     </svg>
-                    View Code on GitHub
+                    GitHub Repo
                 </a>
             </div>
         </div>
 
         <div class="race-controls">
-            <button id="btnRaceBoth" class="btn-race">🏁 RACE BOTH ENGINES 🏁</button>
+            <button id="btnRaceBoth" class="btn-race">▶ Run Head-to-Head Test</button>
         </div>
 
         <div class="demo-grid">
@@ -68,12 +68,12 @@ import '../styles/erp-demo.css';
         </div>
 
         <div class="performance-context" style="margin: 2rem auto; max-width: 800px; padding: 1.5rem; background-color: #1e1e24; border-left: 4px solid #4f46e5; border-radius: 6px; color: #e2e8f0; text-align: left; line-height: 1.6; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <h4 style="margin-top: 0; color: #ffffff; font-size: 1.1em; margin-bottom: 10px;">📊 Why does the Legacy ERP sometimes win? (Latency vs. Throughput)</h4>
+            <h4 style="margin-top: 0; color: #ffffff; font-size: 1.1em; margin-bottom: 10px;">Latency vs. Throughput</h4>
             <p style="margin-bottom: 12px; font-size: 0.9em;">
-                In a 1-on-1 race, you might occasionally see the legacy system tie or beat the cloud API by a few milliseconds. Why? Because for a single request, we are mostly measuring the unpredictable "weather" of the internet, like physical distance and routing paths, rather than the actual speed of the database. It is like two cars racing across town. Sometimes the slower car just catches more green lights.
+                In a single-request benchmark, network routing and physical distance often overshadow database execution time. A legacy system might occasionally win a 1-on-1 race simply due to favorable network conditions.
             </p>
             <p style="margin-bottom: 0; font-size: 0.9em;">
-                <strong>So why migrate to the cloud?</strong> The answer is scale. A legacy relational database is like a one-lane road. It works fine for one car, but if 10,000 users arrive at once, the system bottlenecks and crashes. The Azure NoSQL read model is a 100-lane superhighway. It might not make a single car travel faster, but it guarantees thousands of concurrent users get their data instantly without bringing the system down.
+                <strong>Why migrate to the cloud?</strong> Scale and concurrency. A relational monolith bottlenecks under high concurrent read-volume. A decoupled NoSQL read model guarantees thousands of simultaneous requests are served in O(1) time without degrading the primary write database.
             </p>
         </div>
 
@@ -81,7 +81,7 @@ import '../styles/erp-demo.css';
             <h4>O(1) Cloud Fetch Demonstration</h4>
             <p class="subtitle" style="color: #ffffff; font-size: 0.95em;">Retrieve a single product instantly from the Azure NoSQL Read Model.</p>
             
-            <p id="skuHint" style="font-size: 0.85em; color: #ffffff; margin-bottom: 15px;"><em>Tip: Run a Catalog Fetch above to generate clickable SKU recommendations!</em></p>
+            <p id="skuHint" style="font-size: 0.85em; color: #ffffff; margin-bottom: 15px;"><em>Tip: Run a Catalog Fetch above to generate clickable SKU recommendations.</em></p>
             
             <div id="recommendedSkusContainer" style="display: none; margin-bottom: 20px; flex-direction: column; align-items: center;">
                 <div style="color: #a0a0a0; font-size: 0.9em; margin-bottom: 8px;">Recommended SKUs:</div>                
@@ -104,39 +104,34 @@ import '../styles/erp-demo.css';
     </main>
 
     <div id="specsModal" class="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
-        
         <div class="modal-content" style="background-color: #1a1a20; width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; border: 1px solid #2d2d35; border-radius: 8px; padding: 2.5rem; position: relative; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); transform: translateY(20px); transition: transform 0.3s ease;">
             
             <button id="btnCloseModal" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #8b949e; font-size: 1.5rem; cursor: pointer; transition: color 0.2s ease;">&times;</button>
 
-            <h3 style="margin-top: 0; color: #ffffff; font-size: 1.4em; margin-bottom: 25px; border-bottom: 1px solid #2d2d35; padding-bottom: 15px;">🛠️ Architecture & Data Pipeline</h3>
+            <h3 style="margin-top: 0; color: #ffffff; font-size: 1.4em; margin-bottom: 25px; border-bottom: 1px solid #2d2d35; padding-bottom: 15px;">System Architecture</h3>
 
-            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">The Enterprise Challenge: "Legacy Gravity"</h4>
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">The Problem</h4>
             <p style="margin-bottom: 20px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
-                In high-volume warehouse environments, legacy ERP systems often rely on massive, highly relational databases. While great for maintaining strict data integrity, these systems choke under the massive concurrent read-volume generated by automated scanners and API calls.
-            </p>
-            <p style="margin-bottom: 30px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
-                In this demo, the <strong>Legacy API</strong> simulates this exact bottleneck: An ASP.NET Core API querying a heavily normalized database. It is forced to compute expensive SQL <code>JOIN</code> operations on every single request, slowing down the physical warehouse floor.
+                Legacy ERP systems rely on highly normalized relational databases to maintain strict data integrity. However, calculating multi-table SQL JOINs at runtime creates severe performance bottlenecks under high concurrent read-volume (e.g., from automated warehouse scanners or API integrations).
             </p>
 
-            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">The Solution: Strangler Fig & CQRS</h4>
-            <p style="margin-bottom: 30px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
-                Instead of a risky "Big Bang" rewrite that requires halting business operations, this architecture utilizes the <strong>Strangler Fig Pattern</strong>. We decouple the heavy read-traffic from the legacy system using a <strong>CQRS (Command Query Responsibility Segregation)</strong> architecture built on <strong>C# and .NET 9</strong>. The legacy ERP remains the source of truth for writes, but read-requests are safely routed to a highly scalable cloud environment.
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">1. Strangler Fig & CQRS</h4>
+            <p style="margin-bottom: 20px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
+                To avoid a high-risk "Big Bang" rewrite, this architecture uses the <strong>Strangler Fig pattern</strong>. Read traffic is decoupled from the legacy system using <strong>CQRS (Command Query Responsibility Segregation)</strong> via C# / .NET 9. The legacy ERP remains the source of truth for writes, while read requests are safely routed to a scalable cloud environment.
             </p>
 
-            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">The Data Pipeline (ETL & Flattening)</h4>
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">2. The Data Pipeline (ETL & Flattening)</h4>
             <p style="margin-bottom: 12px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
-                To achieve the instant fetch times seen in the <strong>Modern Azure Backend</strong>, the data architecture relies on a robust ETL (Extract, Transform, Load) pipeline:
+                To achieve near O(1) fetch times, the Azure read model relies on a background ETL process:
             </p>
-            <ul style="margin-bottom: 30px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7; padding-left: 20px;">
-                <li style="margin-bottom: 8px;"><strong>Extraction & Transformation:</strong> We siphon data from the heavily normalized on-premise database. Instead of executing 7-table SQL <code>JOINs</code> at runtime, the ETL process pre-calculates and <strong>flattens</strong> this relational data.</li>
-                <li style="margin-bottom: 8px;"><strong>Loading into Azure:</strong> The flattened, read-optimized data is loaded into an Azure NoSQL partition.</li>
-                <li style="margin-bottom: 8px;"><strong>The Result:</strong> By shifting from complex SQL aggregations to fetching flat JSON documents via Azure Serverless Functions, we reduce database latency to near <strong>O(1) time complexity</strong>.</li>
+            <ul style="margin-bottom: 20px; font-size: 0.95em; color: #e2e8f0; line-height: 1.7; padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Extraction & Transformation:</strong> Data is periodically queried from the normalized on-prem SQL database. Complex JOIN operations are pre-calculated and flattened into JSON documents.</li>
+                <li style="margin-bottom: 0;"><strong>Loading:</strong> The flattened documents are stored in a read-optimized Azure NoSQL partition, allowing serverless functions to fetch complete payloads without relational overhead.</li>
             </ul>
 
-            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">Infrastructure Realities: Benchmarking & Cold-Starts</h4>
+            <h4 style="color: #60a5fa; font-size: 1.1em; margin-bottom: 10px; font-weight: 600;">3. Infrastructure & Cold Starts</h4>
             <p style="margin-bottom: 0; font-size: 0.95em; color: #e2e8f0; line-height: 1.7;">
-                Because this demo utilizes real cloud infrastructure, it accounts for the realities of serverless environments. The frontend dashboard implements <strong>Cold-Start Mitigation</strong> (a silent background warm-up ping to wake up the Azure serverless container upon page load) and a <strong>Keep-Alive Heartbeat</strong> (a CRON job ensuring the legacy Linux container remains awake). This ensures the real-time benchmarking you see above is a highly accurate reflection of production-level API performance.
+                To accurately reflect production-level benchmarking on serverless infrastructure, the frontend implements cold-start mitigation (background warm-up pings on page load) and keep-alive heartbeats to prevent container hibernation.
             </p>
         </div>
     </div>
@@ -159,7 +154,6 @@ import '../styles/erp-demo.css';
                 btnOpen.style.backgroundColor = '#4f46e5'; 
                 btnOpen.style.borderColor = '#4f46e5';
             });
-
             btnGitHub.addEventListener('mouseover', () => {
                 btnGitHub.style.backgroundColor = '#30363d'; 
                 btnGitHub.style.borderColor = '#8b949e';
@@ -168,8 +162,6 @@ import '../styles/erp-demo.css';
                 btnGitHub.style.backgroundColor = '#24292e'; 
                 btnGitHub.style.borderColor = '#30363d';
             });
-
-            // Close button hover effect
             btnClose.addEventListener('mouseover', () => btnClose.style.color = '#ffffff');
             btnClose.addEventListener('mouseout', () => btnClose.style.color = '#8b949e');
 
@@ -179,7 +171,6 @@ import '../styles/erp-demo.css';
                 modalContent.style.transform = 'translateY(0)';
                 document.body.style.overflow = 'hidden'; 
             };
-
             const closeModal = () => {
                 modal.style.opacity = '0';
                 modalContent.style.transform = 'translateY(20px)';
@@ -198,7 +189,6 @@ import '../styles/erp-demo.css';
                     closeModal();
                 }
             });
-
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.style.visibility === 'visible') {
                     closeModal();
