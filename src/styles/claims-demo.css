@@ -4,14 +4,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1.5rem; /* Reduced gap since the status moved */
-    padding: 0 10px;
+    margin-bottom: 1.5rem;
 }
 
 .status-wrapper {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 15px; /* Adds breathing room above the KPI cards */
+    margin-bottom: 15px;
 }
 
 .btn-refresh {
